@@ -1,177 +1,216 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>𝘼𝙇𝙇 𝙋𝘼𝙔𝙈𝙀𝙉𝙏 𝙉𝘼𝙉𝙕</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-image: url('https://img1.pixhost.to/images/5020/587613891_ridhoxsilence.jpg'); /* Ganti dengan path gambar latar belakang */
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #fff;
-        }
-        .container {
-            background-color: rgba(0, 0, 0, 0.5); /* Gelap dengan transparansi untuk efek lebih elegan */
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-        }
-        h1 {
-            color: #fff;
-            font-size: 2em;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-        .payment-methods {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .payment-methods li {
-            background-color: rgba(255, 255, 255, 0.1); /* Transparansi lebih lembut */
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        .payment-methods li h3 {
-            margin: 0;
-            color: #f1c40f; /* Warna emas untuk judul */
-            font-size: 1.2em;
-        }
-        .payment-methods li p {
-            margin: 5px 0;
-            color: #ecf0f1; /* Teks abu-abu terang */
-        }
-        .copy-btn {
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-        }
-        .copy-btn:hover {
-            background-color: #2980b9;
-        }
-        .qr-code {
-            margin-top: 20px;
-        }
-        .note {
-            margin-top: 30px;
-            font-size: 16px;
-            color: #e74c3c;
-        }
-        .note strong {
-            font-weight: bold;
-        }
-        .notification {
-            margin-top: 15px;
-            font-size: 16px;
-            color: #2ecc71;
-            font-weight: bold;
-            display: none;
-        }
-                .scrolling-text {
-    position: absolute;
-    top: 10px; /* Jarak dari atas */
-    left: 0;
-    font-size: 1.2em; /* Ukuran font lebih kecil */
-    font-weight: bold;
-    text-transform: uppercase;
-    color: ##2ecc71; /* Warna teks putih */
-    letter-spacing: 3px;
-    animation: scrollText 20s linear infinite; /* Durasi animasi diperpanjang agar teks lebih santai */
-    transform-style: preserve-3d;
-    perspective: 500px;
-    padding: 5px 10px; /* Memberikan ruang di sekitar teks */
-    border-radius: 5px; /* Membulatkan sudut */
-    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.100); /* Bayangan teks untuk efek cahaya */
-    white-space: nowrap; /* Tidak membungkus teks ke baris baru */
-    display: inline-block; /* Membuat elemen teks tidak meluas dan lebih terkendali */
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pembayaran QRIS - HD UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* Animasi bergerak dari kiri ke kanan */
-@keyframes scrollText {
-    0% {
-        transform: translateX(-100%); /* Mulai dari luar layar di kiri */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://files.catbox.moe/zpbmn5.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
     }
-    100% {
-        transform: translateX(100%); /* Bergerak hingga keluar layar di kanan */
+
+    .card {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      padding: 35px 30px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s ease;
     }
-    </style>
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 25px;
+      color: #ffd700;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .qr-img {
+      width: 60%;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      margin-bottom: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .qr-img:hover {
+      transform: scale(1.05);
+    }
+
+    .note {
+      font-size: 17px;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .note span {
+      color: #00fff0;
+      font-weight: bold;
+    }
+
+    .payment-info {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .payment-label {
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .copy-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 14px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .copy-box span {
+      color: #ffd700;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .copy-btn {
+      background: #00fff0;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #00d6c4;
+    }
+
+    .wa-btn {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    .wa-btn:hover {
+      background-color: #1ebd58;
+    }
+
+    /* Popup QR */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup img {
+      width: 80%;
+      max-width: 420px;
+      border-radius: 24px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 500px) {
+      .qr-img { width: 70%; }
+      .popup img { width: 90%; }
+      h1 { font-size: 24px; }
+      .note, .payment-label { font-size: 14px; }
+      .copy-box span { font-size: 14px; }
+      .copy-btn { font-size: 12px; }
+      .wa-btn { font-size: 15px; padding: 12px 18px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>𝘼𝙇𝙇 𝙋𝘼𝙔𝙈𝙀𝙉𝙏 𝙉𝘼𝙉𝙕</h1>
-    <ul class="payment-methods">
-        <li>
-            <h3>💳 DANA</h3>
-            <p id="dana-number">Nomor: 081545867200</p>
-            <button class="copy-btn" onclick="copyToClipboard('#dana-number', 'DANA')">Salin Nomor</button>
-            <div id="dana-notification" class="notification">Nomor DANA sudah disalin!</div>
-        </li>
-        <li>
-            <h3>💳 OVO</h3>
-            <p id="ovo-number">Nomor: Belum Tersedia Ya bos</p>
-            <button class="copy-btn" onclick="copyToClipboard('#ovo-number', 'OVO')">Salin Nomor</button>
-            <div id="ovo-notification" class="notification">Nomor OVO sudah disalin!</div>
-        </li>
-        <li>
-            <h3>💳 GOPAY</h3>
-            <p id="gopay-number">Nomor: 081545867200</p>
-            <button class="copy-btn" onclick="copyToClipboard('#gopay-number', 'GOPAY')">Salin Nomor</button>
-            <div id="gopay-notification" class="notification">Nomor GOPAY sudah disalin!</div>
-        </li>
-        <li class="qr-code">
-            <h3>💳 QRIS</h3>
-            <img src="https://img1.pixhost.to/images/5020/587613909_skyzopedia.jpg" alt="QRIS" style="max-width: 60%; border-radius: 8px;">
-        </li>
-    </ul>
-        <div class="scrolling-text">Pembuat Web: ALVIN NO +62 831-0613-3182</div>
-    <div class="note">
-        <p><strong>NOTE: WAJIB SERTAKAN BUKTI TRANSFER</strong></p>
+  <div class="card">
+    <h1>QRIS Pembayaran</h1>
+    <img src="https://files.catbox.moe/nfoa7i.jpeg" alt="QRIS" class="qr-img" onclick="showPopup()">
+    <p class="note">Jangan lupa untuk <span>Screenshot</span> dan kirim ke <span>Owner</span>!</p>
+
+    <div class="payment-info">
+      <div class="payment-label">Nomor DANA:</div>
+      <div class="copy-box">
+        <span id="dana1">083106133182</span>
+        <button class="copy-btn" onclick="copyText('dana1')">Salin</button>
+      </div>
+
+      <div class="payment-label">Nomor OVO:</div>
+      <div class="copy-box">
+        <span id="ovo1">083135353690</span>
+        <button class="copy-btn" onclick="copyText('ovo1')">Salin</button>
+      </div>
+
+      <div class="payment-label">Nomor GoPay:</div>
+      <div class="copy-box">
+        <span id="gopay1">083135353690</span>
+        <button class="copy-btn" onclick="copyText('gopay1')">Salin</button>
+      </div>
     </div>
-</div>
 
-<script>
-    function copyToClipboard(id, paymentMethod) {
-        const element = document.querySelector(id);
-        const text = element.textContent || element.innerText;
-        const textArea = document.createElement("textarea");
-        textArea.value = text.replace('Nomor: ', '').trim(); // Hapus 'Nomor: ' dari teks
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textArea);
+    <a href="https://wa.me/6283106133182?text=Min%20saya%20mau%20bayar" target="_blank">
+      <button class="wa-btn">Hubungi via WhatsApp</button>
+    </a>
+  </div>
 
-        // Menampilkan notifikasi yang sesuai dengan metode pembayaran
-        const notification = document.getElementById(paymentMethod.toLowerCase() + '-notification');
-        notification.style.display = 'block';
+  <!-- Popup -->
+  <div class="popup" id="popup" onclick="hidePopup()">
+    <img src="https://files.catbox.moe/nfoa7i.jpeg" alt="QRIS Zoom">
+  </div>
 
-        // Menyembunyikan notifikasi setelah 3 detik
-        setTimeout(function() {
-            notification.style.display = 'none';
-        }, 3000);
+  <script>
+    function showPopup() {
+      document.getElementById("popup").style.display = "flex";
     }
-</script>
 
+    function hidePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Nomor berhasil disalin: " + text);
+      });
+    }
+  </script>
 </body>
 </html>
